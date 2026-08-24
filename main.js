@@ -1,33 +1,58 @@
-// Mobile nav toggle
-const menuBtn = document.getElementById('menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
+// Sustenaa — small progressive-enhancement script (no dependencies)
 
-if (menuBtn && mobileMenu) {
-  menuBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.contains('block');
-    mobileMenu.classList.toggle('block', !isOpen);
-    mobileMenu.classList.toggle('hidden', isOpen);
-    menuBtn.setAttribute('aria-expanded', String(!isOpen));
-  });
-}
+document.addEventListener('DOMContentLoaded', () => {
+  // Footer year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Scroll reveal (respects prefers-reduced-motion via CSS)
-const revealEls = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window && revealEls.length) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
+  // Nav background on scroll
+  const nav = document.querySelector('.nav-shell');
+  const onScroll = () => {
+    if (!nav) return;
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  revealEls.forEach((el) => observer.observe(el));
-} else {
-  revealEls.forEach((el) => el.classList.add('is-visible'));
-}
+  // Reveal-on-scroll + vine growth, via IntersectionObserver
+  const revealEls = document.querySelectorAll('.reveal');
+  const vinePath = document.getElementById('vinePath');
 
-// Set current year in footer
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+    revealEls.forEach((el) => revealObserver.observe(el));
+
+    if (vinePath) {
+      const vineObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              vinePath.classList.add('grown');
+              vineObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      vineObserver.observe(vinePath);
+    }
+  } else {
+    // Fallback: no IntersectionObserver support
+    revealEls.forEach((el) => el.classList.add('visible'));
+    if (vinePath) vinePath.classList.add('grown');
+  }
+});
