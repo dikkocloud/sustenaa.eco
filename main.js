@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       nav.classList.remove('scrolled');
     }
   };
-  window.addEventListener('scroll', onScroll, { passive: Force });
+  window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
   // Reveal-on-scroll + vine growth, via IntersectionObserver
