@@ -112,22 +112,19 @@ button:focus-visible {
   border-radius: 4px;
 }
 
-/* ---------- Impact photo carousel (auto-scrolling) ----------
-   Card width is derived from the carousel's own rendered width
-   (via a CSS container query) so exactly 3 cards are visible at
-   any screen size — desktop, tablet, or mobile — rather than a
-   fixed viewport-width guess that breaks on very wide monitors.
-   Older browsers without container-query support fall back to a
-   viewport-based approximation, which @supports below overrides
-   for everyone else. The loop shift is an exact pixel calc (not
-   a %), which keeps the seam between the real 6 cards and their
-   duplicate set perfectly invisible. */
+/* ---------- Impact photo carousel ----------
+   Built on native horizontal scrolling (overflow-x: auto), not a pure
+   CSS animation — so it works as a real scrollable element: draggable,
+   swipeable, and scrollable with a trackpad or scrollbar, in addition
+   to auto-advancing on its own (driven by script.js). This is more
+   robust than a keyframe-only approach, since native scroll degrades
+   gracefully everywhere even if the auto-scroll JS fails for any
+   reason — the row is still usable by hand. Card width is a plain
+   flexbox percentage (no container queries needed), so exactly 3
+   cards fill the row at any screen size. */
 .impact-scroll-wrap {
   --imp-unit: 0.75rem;
-  /* fallback for browsers without container queries */
-  --imp-card: min(calc((100vw - 4 * var(--imp-unit)) / 3), 360px);
   position: relative;
-  overflow: hidden;
   width: 100%;
 }
 @media (min-width: 768px) {
@@ -135,35 +132,31 @@ button:focus-visible {
     --imp-unit: 1.5rem;
   }
 }
-@supports (container-type: inline-size) {
-  .impact-scroll-wrap {
-    container-type: inline-size;
-    /* exactly 3 cards + 2 gaps fill the container width */
-    --imp-card: calc((100cqw - 2 * var(--imp-unit)) / 3);
-  }
-}
 .impact-track {
   display: flex;
   gap: var(--imp-unit);
-  width: max-content;
-  animation: impact-scroll 30s linear infinite;
-  will-change: transform;
+  overflow-x: auto;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
 }
-.impact-scroll-wrap:hover .impact-track,
-.impact-scroll-wrap:focus-within .impact-track {
-  animation-play-state: paused;
+.impact-track::-webkit-scrollbar {
+  display: none;
+}
+.impact-track.dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
 }
 .impact-card {
   flex: 0 0 auto;
-  width: var(--imp-card);
+  width: calc((100% - 2 * var(--imp-unit)) / 3);
   aspect-ratio: 4 / 5;
   border-radius: 1rem;
   overflow: hidden;
   background: rgba(21, 35, 27, 0.05);
-}
-@keyframes impact-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(calc(-6 * (var(--imp-card) + var(--imp-unit)))); }
+  pointer-events: none; /* let drags pass through to the track, not individual images */
 }
 .impact-fade {
   position: absolute;
@@ -183,14 +176,6 @@ button:focus-visible {
 .impact-fade-right {
   right: 0;
   background: linear-gradient(to left, #F7F3E6, transparent);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .impact-track {
-    animation: none;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
 }
 
 /* ---------- Reduced motion ---------- */
