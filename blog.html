@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — Sustenaa</title>
+<meta name="description" content="Recaps, reflections, and updates from Sustenaa's work in communities across Nigeria." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Tailwind (CDN, zero-build — safe for static Vercel deploy) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          forest: { 900: '#0F1F17', 800: '#16301F', 700: '#1F3D2C' },
+          lime: { DEFAULT: '#B4FA0E', 500: '#B4FA0E', 600: '#9CDB08' },
+          paper: '#F7F3E6',
+          ink: '#15231B',
+          soil: '#8B5E34',
+        },
+        fontFamily: {
+          display: ['"Fraunces"', 'serif'],
+          sans: ['"Inter"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-paper text-ink font-sans antialiased">
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-0 inset-x-0 z-50 nav-shell scrolled">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 h-16 sm:h-20 flex items-center justify-between gap-2">
+    <a href="index.html" class="flex items-center gap-2 sm:gap-3 group shrink-0">
+      <img src="logo.jpg" alt="Sustenaa logo" class="w-8 h-8 sm:w-9 sm:h-9 rounded-md object-cover ring-1 ring-black/10" />
+      <span class="font-display font-medium text-base sm:text-lg tracking-tight text-white">Sustenaa</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+      <a href="index.html" class="text-white/85 hover:text-lime transition-colors">Home</a>
+      <a href="blog.html" class="text-lime">Blog</a>
+      <a href="consult.html" class="text-white/85 hover:text-lime transition-colors">Consult</a>
+    </nav>
+    <a href="https://chat.whatsapp.com/FzljocuZ0we1xKfRm27XJS?s=cl&p=a&ilr=0"
+       target="_blank" rel="noopener"
+       class="inline-flex items-center gap-2 bg-lime text-forest-900 text-xs sm:text-sm font-semibold px-3 sm:px-4 py-2 sm:py-2.5 rounded-full hover:bg-white transition-colors whitespace-nowrap shrink-0">
+      <span class="sm:hidden">Join us</span>
+      <span class="hidden sm:inline">Join our community</span>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HEADER ============ -->
+<section class="bg-forest-900 pt-32 pb-20 md:pt-44 md:pb-28">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <p class="eyebrow text-lime text-sm font-semibold tracking-widest uppercase mb-6">The Sustenaa Blog</p>
+    <h1 class="font-display text-white text-4xl leading-[1.1] sm:text-5xl md:text-6xl font-medium max-w-2xl">
+      Recaps, reflections, and what's happening on the ground.
+    </h1>
+  </div>
+</section>
+
+<!-- ============ POSTS GRID ============ -->
+<section class="bg-paper py-20 md:py-28">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div id="blog-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Filled in automatically by blog-render.js from posts.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-forest-900 py-14">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+      <a href="index.html" class="flex items-center gap-3">
+        <img src="logo.jpg" alt="Sustenaa logo" class="w-8 h-8 rounded-md object-cover ring-1 ring-white/10" />
+        <span class="font-display text-white text-lg">Sustenaa</span>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <a href="https://www.facebook.com/share/19QwfWqJup/" target="_blank" rel="noopener" aria-label="Sustenaa on Facebook"
+           class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-forest-900 hover:bg-lime hover:border-lime transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 8.5h2V6h-2a3 3 0 0 0-3 3v2H9v2.5h2V19h2.5v-5.5H16l.4-2.5h-2.9V9c0-.3.2-.5.5-.5Z"/>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/sustenaa?igsi=ZjgzeXhqOTJpaGxt" rel="noopener" aria-label="Sustenaa on Instagram"
+           class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-forest-900 hover:bg-lime hover:border-lime transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="4" width="16" height="16" rx="4.5"/>
+            <circle cx="12" cy="12" r="3.4"/>
+            <circle cx="16.6" cy="7.4" r="0.65" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@sustenaa8?_r=1&_t=ZS-99Ah0VIEafv" target="_blank" rel="noopener" aria-label="Sustenaa on TikTok"
+           class="w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-forest-900 hover:bg-lime hover:border-lime transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 4v10.5a3.2 3.2 0 1 1-2.4-3.1"/>
+            <path d="M14 4c.3 2 2 3.6 4 3.9"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-white/50 text-sm">Climate action for everyday people.</p>
+      <p class="text-white/40 text-sm">© <span id="year"></span> Sustenaa</p>
+    </div>
+  </div>
+</footer>
+
+<script src="posts.js"></script>
+<script src="blog-render.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
