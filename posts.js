@@ -31,21 +31,16 @@
 const POSTS = [
   {
     slug: "ozone-guardians-gombe",
-    title: "What Northern Nigeria Teaches Us About the Global Water Crisis
-By Hafsat Shehu
-",
-    date: "2026-08-28",
-    excerpt: "
-In states across Northern Nigeria, the physical and socio-economic burden of water scarcity falls heaviest on women and young girls. 
-  Every morning, long before dawn, young girls trek kilometers across dry, unsafe terrain carrying heavy jerrycans. 
-  The hours spent searching for water are hours stolen from classrooms and personal growth, compounding gender inequality across generations. At the same time, declining water tables and parched grazing lands have intensified competition between pastoralists and agricultural farmers, demonstrating how environmental degradation directly fuels conflict.
-.",
+    title: "Bringing Ozone Guardians into Gombe classrooms",
+    date: "2026-07-15",
+    excerpt: "Sustenaa partnered with YE-CAN's Ozone Guardians program to bring climate conversations directly into secondary school classrooms in Gombe State.",
     coverImage: "impact-6.jpg",
     content: `
-      <p>Across the globe, clean water is quietly becoming the rarest luxury of our era. According to global health and development reports, nearly 2.1 billion people—roughly one in four globally—still live without access to safely managed drinking water at home. While international discussions often frame water insecurity as an abstract, far-off threat tied to climate modeling, millions across the Global South experience it as a daily, relentless struggle. Nowhere is this crisis more vivid, or more urgent, than in Northern Nigeria.
-
-In the semi-arid expanses of the Sahel, water is not merely a natural resource; it is the fundamental currency of human survival. Over recent decades, climate variability, shifting rainfall patterns, and severe groundwater depletion have placed immense strain on northern communities. The dramatic historic shrinkage of Lake Chad—which historically sustained agriculture, fishing, and livestock for over 30 million people across Nigeria, Niger, Chad, and Cameroon—serves as a stark warning to the world. Having lost roughly 90 percent of its surface area since the 1960s due to climate shifts and unsustainable extraction, the lake's degradation has destabilized local economies, deepened poverty, and displaced entire livelihoods.
-.</p>
+      <p>[Draft post — replace this with your own recap before publishing.]
+      Earlier this year, Sustenaa joined YE-CAN (Youth Empowerment for
+      Climate Action in Nigeria) for an Ozone Guardians session in Gombe
+      State, part of a wider push to get climate conversations into
+      classrooms rather than just conference rooms.</p>
 
       <h3>Why schools</h3>
       <p>Students spend their days in the buildings and communities most
