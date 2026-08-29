@@ -133,4 +133,24 @@ document.addEventListener('DOMContentLoaded', () => {
       resumeSoon();
     });
   }
+
+  // ---------- Mobile nav menu (hamburger) ----------
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const menuPanel = document.getElementById('mobile-menu');
+  if (menuToggle && menuPanel) {
+    const closeMenu = () => {
+      menuPanel.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    };
+    const toggleMenu = () => {
+      const isOpen = menuPanel.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+    menuToggle.addEventListener('click', toggleMenu);
+    // Close the menu once someone taps a link inside it, so it doesn't
+    // stay open over the section they just navigated to.
+    menuPanel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
 });
