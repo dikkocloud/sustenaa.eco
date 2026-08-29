@@ -87,13 +87,34 @@ body {
 
 /* ---------- Cards ---------- */
 .mission-card,
-.team-card {
+.team-card,
+.blog-card {
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 .mission-card:hover,
-.team-card:hover {
+.team-card:hover,
+.blog-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px -20px rgba(21, 35, 27, 0.18);
+}
+
+/* ---------- Blog post body ---------- */
+.prose-blog p {
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+}
+.prose-blog h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #15231B;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.prose-blog a {
+  color: #8B5E34;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* ---------- Buttons ---------- */
@@ -102,6 +123,16 @@ body {
 }
 .btn-primary:hover {
   transform: translateY(-2px);
+}
+
+/* ---------- Mobile nav menu ---------- */
+.mobile-menu-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.mobile-menu-panel.open {
+  max-height: 22rem;
 }
 
 /* ---------- Focus states (accessibility) ---------- */
